@@ -40,6 +40,7 @@ def prevadec(jednotkad):
             case _:
                 print("neplatne\n")
 
+
     if jednotkad == "dm":
         match b:
             case "km":
