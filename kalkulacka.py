@@ -25,6 +25,7 @@ def prevadec(jednotkad):
             case _:
                 print("neplatne\n")
 
+
     if jednotkad == "m":
         match b:
             case "km":
