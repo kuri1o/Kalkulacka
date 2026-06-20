@@ -115,7 +115,21 @@ def prevadec():
                 "mi": lambda a: a * 1609.344,
             }
 
-            if jednotkad in ["km", "m", "dm", "cm", "mm"]:
+            z_metru = {
+                "km": lambda m: m / 1000,
+                "m":  lambda m: m,
+                "dm": lambda m: m * 10,
+                "cm": lambda m: m * 100,
+                "mm": lambda m: m * 1000,
+                "µm": lambda m: m * 1000000,
+                "nm": lambda m: m * 1000000000,
+                "in": lambda m: m / 0.0254,
+                "ft": lambda m: m / 0.3048,
+                "yd": lambda m: m / 0.9144,
+                "mi": lambda m: m / 1609.344,
+            }
+
+            if jednotkad in na_metry:
                 a = float(input("kolik?\n"))
                 b = input("Na co to chces? (km, m, dm, cm, mm)\n")
                 if jednotkad == "km":
