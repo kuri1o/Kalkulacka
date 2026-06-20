@@ -99,7 +99,21 @@ def prevadec():
     prevadet = input("Co chces prevadet: delku\n")
     match prevadet:
         case "delku":
-            jednotkad = input("Jakou jednotu chces prevadet? (km, m, dm, cm, mm)\n")
+            jednotkad = input("Jakou jednotu chces prevadet?\nµ - alt + 0181\nmetricky = [km, m, dm, cm, mm, µm, nm]\namericke = [in, ft, yd, mi]\n")
+
+            na_metry = {
+                "km": lambda a: a * 1000,
+                "m":  lambda a: a,
+                "dm": lambda a: a / 10,
+                "cm": lambda a: a / 100,
+                "mm": lambda a: a / 1000,
+                "µm": lambda a: a / 1000000,
+                "nm": lambda a: a / 1000000000,
+                "in": lambda a: a * 0.0254,
+                "ft": lambda a: a * 0.3048,
+                "yd": lambda a: a * 0.9144,
+                "mi": lambda a: a * 1609.344,
+            }
 
             if jednotkad in ["km", "m", "dm", "cm", "mm"]:
                 a = float(input("kolik?\n"))
