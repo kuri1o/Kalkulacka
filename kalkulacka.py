@@ -131,82 +131,12 @@ def prevadec():
 
             if jednotkad in na_metry:
                 a = float(input("kolik?\n"))
-                b = input("Na co to chces? (km, m, dm, cm, mm)\n")
-                if jednotkad == "km":
-                    match b:
-                        case "km":
-                            print(a*1)
-                        case "m":
-                            print(a * 1000)
-                        case "dm":
-                            print(a * 10000)
-                        case "cm":
-                            print(a * 100000)
-                        case "mm":
-                             print(a * 1000000)
-                        case _:
-                            print("neplatne\n")
-
-                elif jednotkad == "m":
-                    match b:
-                        case "km":
-                            print(a / 1000)
-                        case "m":
-                            print(a * 1)
-                        case "dm":
-                            print(a * 10)
-                        case "cm":
-                            print(a * 100)
-                        case "mm":
-                            print(a * 1000)
-                        case _:
-                            print("neplatne\n")
-
-                elif jednotkad == "dm":
-                    match b:
-                        case "km":
-                            print(a / 10000)
-                        case "m":
-                            print(a / 10)
-                        case "dm":
-                            print(a * 1)
-                        case "cm":
-                            print(a * 10)
-                        case "mm":
-                            print(a * 100)
-                        case _:
-                            print("neplatne\n")
-
-                elif jednotkad == "cm":
-                    match b:
-                        case "km":
-                            print(a / 100000)
-                        case "m":
-                            print(a / 100)
-                        case "dm":
-                            print(a / 10)
-                        case "cm":
-                            print(a * 1)
-                        case "mm":
-                            print(a * 10)
-                        case _:
-                            print("neplatne\n")
-
-                elif jednotkad == "mm":
-                    match b:
-                        case "km":
-                            print(a / 1000000)
-                        case "m":
-                            print(a / 1000)
-                        case "dm":
-                            print(a / 100)
-                        case "cm":
-                            print(a / 10)
-                        case "mm":
-                            print(a * 1)
-                        case _:
-                            print("neplatne\n")
-
+                b = input("Na co to chces? (km, m, dm, cm, mm, µm, nm, in, ft, yd, mi)\n")
+                if b in z_metru:
+                    metry = na_metry[jednotkad](a)
+                    print(z_metru[b](metry))
+                else:
+                    print("neplatne\n")
             else:
                 print("neplatne\n")
         case _:
