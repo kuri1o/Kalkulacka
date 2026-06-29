@@ -96,10 +96,9 @@ def kalkulackao():
                 print("neplatne")
 
 def prevadec():
-    prevadet = input("Co chces prevadet: delku\n")
+    prevadet = input("Co chces prevadet: delku\n\t\t\t\t   objem\n")
     match prevadet:
         case "delku":
-            jednotkad = input("Jakou jednotu chces prevadet?\nµ - alt + 0181\nmetricky = [km, m, dm, cm, mm, µm, nm]\namericke = [in, ft, yd, mi]\n")
 
             na_metry = {
                 "km": lambda a: a * 1000,
@@ -128,87 +127,53 @@ def prevadec():
                 "yd": lambda m: m / 0.9144,
                 "mi": lambda m: m / 1609.344,
             }
-
+            jednotkad = input("Jakou jednotu chces prevadet?\nµ - alt + 0181\nmetricky = [km, m, dm, cm, mm, µm, nm]\namericke = [in, ft, yd, mi]\n")
             if jednotkad in na_metry:
                 a = float(input("kolik?\n"))
-                b = input("Na co to chces? (km, m, dm, cm, mm)\n")
-                if jednotkad == "km":
-                    match b:
-                        case "km":
-                            print(a*1)
-                        case "m":
-                            print(a * 1000)
-                        case "dm":
-                            print(a * 10000)
-                        case "cm":
-                            print(a * 100000)
-                        case "mm":
-                             print(a * 1000000)
-                        case _:
-                            print("neplatne\n")
-
-                elif jednotkad == "m":
-                    match b:
-                        case "km":
-                            print(a / 1000)
-                        case "m":
-                            print(a * 1)
-                        case "dm":
-                            print(a * 10)
-                        case "cm":
-                            print(a * 100)
-                        case "mm":
-                            print(a * 1000)
-                        case _:
-                            print("neplatne\n")
-
-                elif jednotkad == "dm":
-                    match b:
-                        case "km":
-                            print(a / 10000)
-                        case "m":
-                            print(a / 10)
-                        case "dm":
-                            print(a * 1)
-                        case "cm":
-                            print(a * 10)
-                        case "mm":
-                            print(a * 100)
-                        case _:
-                            print("neplatne\n")
-
-                elif jednotkad == "cm":
-                    match b:
-                        case "km":
-                            print(a / 100000)
-                        case "m":
-                            print(a / 100)
-                        case "dm":
-                            print(a / 10)
-                        case "cm":
-                            print(a * 1)
-                        case "mm":
-                            print(a * 10)
-                        case _:
-                            print("neplatne\n")
-
-                elif jednotkad == "mm":
-                    match b:
-                        case "km":
-                            print(a / 1000000)
-                        case "m":
-                            print(a / 1000)
-                        case "dm":
-                            print(a / 100)
-                        case "cm":
-                            print(a / 10)
-                        case "mm":
-                            print(a * 1)
-                        case _:
-                            print("neplatne\n")
-
+                b = input("Na co to chces? (km, m, dm, cm, mm, µm, nm, in, ft, yd, mi)\n")
+                if b in z_metru:
+                    metry = na_metry[jednotkad](a)
+                    print(z_metru[b](metry))
+                else:
+                    print("neplatne\n")
             else:
                 print("neplatne\n")
+
+        case "objem":
+
+            na_litry = {
+                "ml": lambda a: a / 1000,
+                "cl": lambda a: a / 100,
+                "dl": lambda a: a / 10,
+                "l": lambda a: a,
+                "dm3": lambda a: a,
+                "cm3": lambda a: a / 1000,
+                "mm3": lambda a: a / 1000000,
+                "m3": lambda a: a * 1000,
+            }
+
+            z_litru = {
+                "ml": lambda l: l * 1000,
+                "cl": lambda l: l * 100,
+                "dl": lambda l: l * 10,
+                "l": lambda l: l,
+                "dm3": lambda l: l,
+                "cm3": lambda l: l * 1000,
+                "mm3": lambda l: l * 1000000,
+                "m3": lambda l: l / 1000,
+            }
+            jednotkao = input("Jakou jednotu chces prevadet? (l, dl, cl, ml, m3, dm3, cm3, mm3)")
+            if jednotkao in na_litru:
+                a = float(input("kolik?\n"))
+                b = input("Na co to chces? (l, dl, cl, ml, m3, dm3, cm3, mm3)\n")
+                if b in z_litru:
+                    litry = na_litry[jednotkao](a)
+                    print(z_litru[b](litry))
+                else:
+                    print("neplatne\n")
+            else :
+                print("neplatne\n")
+
         case _:
             print("neplatne\n")
 
