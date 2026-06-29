@@ -14,7 +14,7 @@ def kalkulackao():
         vysledek = float(vysledek)
 
     while True:
-        operace = input("Operace [+, -, *, /, (, =]: \n")
+        operace = input("Operace [+, -, *, /, (, mocnina, =]: \n")
         match operace:
             case "+":
                 b = nacti_cislo()
@@ -38,10 +38,15 @@ def kalkulackao():
                     print(vysledek)
                 else:
                     print("Deleni nulou nejde\n")
+            case "mocnina":
+                print("Jakou mocninou to chces?")
+                b = nacti_cislo()
+                vysledek = pow(vysledek, b )
+                print(vysledek)
             case "(":
                 c = nacti_cislo()
                 while True:
-                    operace = input("Operace [+, -, *, /, =]: \n")
+                    operace = input("Operace [+, -, *, /, ), mocnina, =]: \n")
                     match operace:
                         case "+":
                             b = nacti_cislo()
@@ -65,6 +70,13 @@ def kalkulackao():
                                 print(vysledek, "(", c, ")\n")
                             else:
                                 print("Deleni nulou nejde\n")
+
+                        case "mocnina":
+                            print("Jakou mocninou to chces?")
+                            b = nacti_cislo()
+                            vysledek = pow(vysledek, b)
+                            print(vysledek)
+
                         case ")":
                             jak = input("jak to chces pripocitat?\n")
                             match jak:
